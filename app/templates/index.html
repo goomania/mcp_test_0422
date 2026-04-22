@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Course Advisor</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>Student Course Advisor</h1>
+      <p>Ask naturally, e.g. <em>"What CS courses with open seats are on TR?"</em></p>
+      <textarea id="question" rows="4" placeholder="Ask about subjects, seats, or schedule..."></textarea>
+      <button id="askBtn">Get Advice</button>
+
+      <section>
+        <h2>Advisor response</h2>
+        <pre id="advice"></pre>
+      </section>
+
+      <section>
+        <h2>Matching courses</h2>
+        <div id="courses"></div>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
