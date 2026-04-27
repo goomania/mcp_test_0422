@@ -41,5 +41,16 @@ class MCPClient:
         return result["content"]
 
     def close(self) -> None:
-        if self.proc.poll() is None:
-            self.proc.terminate()
+        try:
+            if self.proc.poll() is None:
+                self.proc.terminate()
+                try:
+                    self.proc.wait(timeout=2)
+                except subprocess.TimeoutExpired:
+                    self.proc.kill()
+                    self.proc.wait(timeout=2)
+        finally:
+            if self.proc.stdin and not self.proc.stdin.closed:
+                self.proc.stdin.close()
+            if self.proc.stdout and not self.proc.stdout.closed:
+                self.proc.stdout.close()

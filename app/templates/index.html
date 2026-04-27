@@ -31,6 +31,70 @@
         <h2>Matching courses</h2>
         <div id="courses"></div>
       </section>
+
+      <hr class="divider" />
+
+      <section>
+        <h2>Top course matches (preferences)</h2>
+        <div class="match-form">
+          <fieldset class="match-fieldset">
+            <legend>Subjects</legend>
+            <label><input type="checkbox" name="subject" value="CS" /> CS</label>
+            <label><input type="checkbox" name="subject" value="MATH" /> MATH</label>
+            <label><input type="checkbox" name="subject" value="BIO" /> BIO</label>
+            <label><input type="checkbox" name="subject" value="ENG" /> ENG</label>
+            <label><input type="checkbox" name="subject" value="HIST" /> HIST</label>
+          </fieldset>
+
+          <label class="match-row">
+            <span>Days</span>
+            <select id="matchDays">
+              <option value="ANY">Any</option>
+              <option value="MWF">MWF</option>
+              <option value="TR">TR</option>
+            </select>
+          </label>
+
+          <div class="match-grid">
+            <label class="match-row">
+              <span>Earliest start (HH:MM)</span>
+              <input id="earliestStart" placeholder="09:00" />
+            </label>
+            <label class="match-row">
+              <span>Latest end (HH:MM)</span>
+              <input id="latestEnd" placeholder="17:00" />
+            </label>
+          </div>
+
+          <label class="match-row match-inline">
+            <input id="onlyOpen" type="checkbox" />
+            <span>Only show courses with open seats</span>
+          </label>
+
+          <label class="match-row">
+            <span>Interests (keywords)</span>
+            <input id="interests" placeholder="databases, writing, biology..." />
+          </label>
+
+          <div class="match-grid">
+            <label class="match-row">
+              <span>Top N</span>
+              <input id="topN" type="number" min="1" max="20" value="5" />
+            </label>
+            <label class="match-row">
+              <span>Max per subject</span>
+              <input id="maxPerSubject" type="number" min="1" max="20" value="3" />
+            </label>
+          </div>
+
+          <button id="matchBtn">Get Matches</button>
+        </div>
+
+        <section>
+          <h3>Recommendations</h3>
+          <div id="matches"></div>
+        </section>
+      </section>
     </main>
     <script src="/static/app.js"></script>
   </body>

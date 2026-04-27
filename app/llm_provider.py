@@ -13,9 +13,15 @@ class AdviceProvider:
 
     def generate(self, question: str, courses: list[dict]) -> str:
         if self.claude_key:
-            return self._ask_claude(question, courses)
+            try:
+                return self._ask_claude(question, courses)
+            except Exception:
+                return self._fallback(question, courses)
         if self.gemini_key:
-            return self._ask_gemini(question, courses)
+            try:
+                return self._ask_gemini(question, courses)
+            except Exception:
+                return self._fallback(question, courses)
         return self._fallback(question, courses)
 
     def _prompt(self, question: str, courses: list[dict]) -> str:

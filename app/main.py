@@ -8,6 +8,7 @@ from pydantic import BaseModel
 
 from app.advisor import CourseAdvisor
 from app.db import init_db
+from app.matching import MatchRequest, match_courses
 
 app = FastAPI(title="Course Advisor")
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
@@ -33,6 +34,12 @@ def home(request: Request):
 def ask(body: AskBody):
     result = advisor.advise(body.question)
     return JSONResponse(result)
+
+
+@app.post("/api/match")
+def match(body: MatchRequest):
+    result = match_courses(body)
+    return JSONResponse(result.model_dump())
 
 
 @app.on_event("shutdown")

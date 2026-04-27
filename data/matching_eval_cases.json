@@ -1,0 +1,30 @@
+[
+  {
+    "name": "CS_TR_open",
+    "request": {
+      "student": { "subjects": ["CS"], "days": "TR", "only_open": true, "interests": "" },
+      "top_n": 3,
+      "max_per_subject": 3
+    },
+    "expected_contains": ["CS301"]
+  },
+  {
+    "name": "Writing_TR",
+    "request": {
+      "student": { "subjects": ["ENG"], "days": "TR", "only_open": false, "interests": "writing" },
+      "top_n": 3,
+      "max_per_subject": 3
+    },
+    "expected_contains": ["ENG210"]
+  },
+  {
+    "name": "Math_TR_morning",
+    "request": {
+      "student": { "subjects": ["MATH"], "days": "TR", "earliest_start": "09:00", "latest_end": "11:30", "only_open": true, "interests": "" },
+      "top_n": 3,
+      "max_per_subject": 3
+    },
+    "expected_contains": ["MATH240"]
+  }
+]
+
